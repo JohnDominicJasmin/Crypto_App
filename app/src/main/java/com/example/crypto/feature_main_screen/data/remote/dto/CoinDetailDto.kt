@@ -29,16 +29,3 @@ data class CoinDetailDto(
 )
 
 
-fun CoinDetailDto.toCoinDetail(): CoinDetail {
-    return CoinDetail(
-        coinId = id,
-        name = name,
-        isActive = is_active,
-        symbol = symbol,
-        description = description,
-        rank = rank,
-        team = teamMembers,
-        tags = tags.map { it.name },
-
-        )
-}
