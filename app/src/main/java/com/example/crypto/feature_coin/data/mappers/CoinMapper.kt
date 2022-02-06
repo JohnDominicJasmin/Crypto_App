@@ -6,6 +6,8 @@ import com.example.crypto.feature_coin.domain.model.Coin
 import com.example.crypto.feature_coin.domain.model.CoinDetail
 
 object CoinMapper {
+
+
     fun CoinDto.toCoin(): Coin {
         return Coin(
             id = id,
@@ -15,6 +17,8 @@ object CoinMapper {
             symbol = symbol
         )
     }
+
+
     fun CoinDetailDto.toCoinDetail(): CoinDetail {
 
         return CoinDetail(
