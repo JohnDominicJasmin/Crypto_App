@@ -1,4 +1,4 @@
-package com.example.crypto.feature_main_screen.presentation.ui
+package com.example.crypto.feature_coin.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

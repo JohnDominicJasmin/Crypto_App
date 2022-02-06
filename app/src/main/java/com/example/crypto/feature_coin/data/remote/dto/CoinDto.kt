@@ -1,6 +1,4 @@
-package com.example.crypto.feature_main_screen.data.remote.dto
-
-import com.example.crypto.feature_main_screen.domain.model.Coin
+package com.example.crypto.feature_coin.data.remote.dto
 
 data class CoinDto(
     val id: String,

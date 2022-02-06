@@ -1,4 +1,4 @@
-package com.example.crypto.feature_main_screen.data.remote.dto
+package com.example.crypto.feature_coin.data.remote.dto
 
 data class Links(
     val explorer: List<String>,

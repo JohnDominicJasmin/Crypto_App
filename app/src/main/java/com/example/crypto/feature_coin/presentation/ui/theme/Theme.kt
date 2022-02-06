@@ -1,4 +1,4 @@
-package com.example.crypto.feature_main_screen.presentation.ui
+package com.example.crypto.feature_coin.presentation.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

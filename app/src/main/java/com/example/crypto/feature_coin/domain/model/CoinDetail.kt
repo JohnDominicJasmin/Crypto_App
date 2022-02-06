@@ -1,6 +1,6 @@
-package com.example.crypto.feature_main_screen.domain.model
+package com.example.crypto.feature_coin.domain.model
 
-import com.example.crypto.feature_main_screen.data.remote.dto.TeamMember
+import com.example.crypto.feature_coin.data.remote.dto.TeamMember
 
 data class CoinDetail(
     val coinId:String,

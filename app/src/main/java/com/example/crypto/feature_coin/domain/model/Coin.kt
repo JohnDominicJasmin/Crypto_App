@@ -1,4 +1,4 @@
-package com.example.crypto.feature_main_screen.domain.model
+package com.example.crypto.feature_coin.domain.model
 
 data class Coin(
     val id: String,
