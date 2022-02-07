@@ -12,7 +12,7 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class CoinRepositoryImpl @Inject constructor(
+class CoinRepositoryImpl (
     private val api: CoinPaprikaApi ): CoinRepository {
 
 

@@ -12,11 +12,11 @@ class GetCoinsUseCase(private val repository: CoinRepository) {
     operator fun invoke():Flow<Resource<List<Coin>>> = flow {
 
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<List<Coin>>())
             val coins = repository.getCoins()
-            emit(Resource.Success(data = coins))
+            emit(Resource.Success<List<Coin>>(data = coins))
         }catch (e:RuntimeException){
-            emit(Resource.Error(message = e.message!!))
+            emit(Resource.Error<List<Coin>>(message = e.message!!))
         }
     }
     }
