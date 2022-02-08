@@ -1,4 +1,4 @@
-package com.example.crypto.core
+package com.example.crypto.common
 
 object CoinConstants {
     const val BASE_URL = "https://api.coinpaprika.com/"
