@@ -1,6 +1,6 @@
 package com.example.crypto.di
 
-import com.example.crypto.core.CoinConstants
+import com.example.crypto.common.CoinConstants
 import com.example.crypto.feature_coin.data.CoinPaprikaApi
 import com.example.crypto.feature_coin.data.repository.CoinRepositoryImpl
 import com.example.crypto.feature_coin.domain.repositories.CoinRepository

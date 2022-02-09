@@ -1,6 +1,5 @@
 package com.example.crypto.feature_coin.data.repository
 
-import com.example.crypto.core.Resource
 import com.example.crypto.feature_coin.data.CoinPaprikaApi
 import com.example.crypto.feature_coin.data.exceptions.CustomException
 import com.example.crypto.feature_coin.data.mappers.CoinMapper.toCoin
@@ -10,7 +9,6 @@ import com.example.crypto.feature_coin.domain.model.CoinDetail
 import com.example.crypto.feature_coin.domain.repositories.CoinRepository
 import retrofit2.HttpException
 import java.io.IOException
-import javax.inject.Inject
 
 class CoinRepositoryImpl (
     private val api: CoinPaprikaApi ): CoinRepository {
