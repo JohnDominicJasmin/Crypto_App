@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.crypto.core.CoinConstants
-import com.example.crypto.core.Resource
+import com.example.crypto.common.CoinConstants
+import com.example.crypto.common.Resource
 import com.example.crypto.feature_coin.domain.use_case.CoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -33,13 +33,13 @@ class CoinDetailViewModel @Inject constructor(
         coinUseCase.getCoinByIdUseCase(coinId).onEach { result ->
 
                 when (result) {
-                    is Resource.Success -> {
+                    is Resource.Success<*> -> {
                         _coinListState.value = CoinDetailState(coins = result.data)
                     }
-                    is Resource.Error ->{
+                    is Resource.Error<*> ->{
                         _coinListState.value = CoinDetailState(isLoading = false, error = result.message?:"An unexpected error occurred.")
                     }
-                    is Resource.Loading ->{
+                    is Resource.Loading<*> ->{
                         _coinListState.value = CoinDetailState(isLoading = true)
                     }
 

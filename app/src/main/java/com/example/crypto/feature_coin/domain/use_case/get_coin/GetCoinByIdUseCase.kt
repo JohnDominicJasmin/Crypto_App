@@ -1,6 +1,6 @@
 package com.example.crypto.feature_coin.domain.use_case.get_coin
 
-import com.example.crypto.core.Resource
+import com.example.crypto.common.Resource
 import com.example.crypto.feature_coin.domain.model.CoinDetail
 import com.example.crypto.feature_coin.domain.repositories.CoinRepository
 import kotlinx.coroutines.flow.Flow
