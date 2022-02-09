@@ -81,4 +81,7 @@ dependencies {
 
     //leakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
+
+    //flowRow
+    implementation "com.google.accompanist:accompanist-flowlayout:0.24.1-alpha"
 }
