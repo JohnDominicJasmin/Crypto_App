@@ -4,6 +4,7 @@ import com.example.crypto.feature_coin.data.remote.dto.CoinDetailDto
 import com.example.crypto.feature_coin.data.remote.dto.CoinDto
 import com.example.crypto.feature_coin.domain.model.Coin
 import com.example.crypto.feature_coin.domain.model.CoinDetail
+import timber.log.Timber
 
 object CoinMapper {
 
@@ -20,16 +21,16 @@ object CoinMapper {
 
 
     fun CoinDetailDto.toCoinDetail(): CoinDetail {
-
+        Timber.e("ResultsID: $id\n NAME: $name \n IS_ACTIVE: $isActive \n SYMBOL: $symbol \n DESCRIPTION: $description \n RANK $rank \n TEAM_MEMBERS $team \n TAGS $tags")
         return CoinDetail(
             coinId = id,
             name = name,
-            isActive = is_active,
+            isActive = isActive,
             symbol = symbol,
             description = description,
             rank = rank,
-            team = teamMembers,
-            tags = tags.map { it.name },
+            team = team,
+            tags = tags?.map { it.name },
 
             )
     }

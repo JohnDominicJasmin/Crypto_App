@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
@@ -22,13 +23,13 @@ fun CoinListItem(
     onItemClick: (Coin) -> Unit
 ) {
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onItemClick(coin) }
-            .padding(20.dp),
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .clickable { onItemClick(coin) }
+        .padding(15.dp),
+        verticalAlignment = CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween) {
 
-        horizontalArrangement = Arrangement.Center) {
         with(coin) {
             Text(
                 text = "$rank. $name ($symbol)",
@@ -50,4 +51,8 @@ fun CoinListItem(
 
 @Composable
 @Preview
-fun CoinItemPreview() {}
+fun CoinItemPreview() {
+    MaterialTheme {
+
+    }
+}

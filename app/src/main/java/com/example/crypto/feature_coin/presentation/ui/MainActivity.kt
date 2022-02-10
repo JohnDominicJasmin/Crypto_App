@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CryptoTheme {
+            MaterialTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.CoinListScreen.route) {
 
                         composable(route = Screen.CoinListScreen.route){
-                            Timber.e("${this.javaClass.name}: Navigation Arguments:"+"${it.arguments?.getString(CoinConstants.COIN_ID)}")
                             CoinListScreen(navController = navController)
                         }
 

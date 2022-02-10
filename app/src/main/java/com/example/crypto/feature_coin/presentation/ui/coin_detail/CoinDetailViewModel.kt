@@ -24,9 +24,8 @@ class CoinDetailViewModel @Inject constructor(
 
 
     init{
-        savedStateHandle.get<String>(CoinConstants.COIN_ID)?.let{
+        savedStateHandle.get<String>(CoinConstants.COIN_ID)?.let {
             getCoin(it)
-            Log.e("CoinDetailViewModel","Result is $it")
         }
     }
 
