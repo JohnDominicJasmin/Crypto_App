@@ -100,5 +100,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
 
 
+    //Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
 
 }
