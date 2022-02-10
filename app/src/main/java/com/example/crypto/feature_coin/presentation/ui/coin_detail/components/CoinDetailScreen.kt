@@ -10,22 +10,22 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.crypto.feature_coin.presentation.ui.coin_detail.CoinDetailViewModel
 import com.example.crypto.feature_coin.presentation.ui.common.Status
+import com.google.accompanist.flowlayout.FlowRow
+import timber.log.Timber
 
 @Composable
 fun CoinDetailScreen(
-    navController: NavController,
     viewModel: CoinDetailViewModel = hiltViewModel()
 ) {
 
-    with(viewModel.coinListState.value) {
         Box(modifier = Modifier.fillMaxSize()) {
-
+            with(viewModel.coinListState.value) {
             coins?.let { coin->
 
                 LazyColumn(modifier = Modifier
@@ -33,22 +33,17 @@ fun CoinDetailScreen(
                     .padding(15.dp)) {
 
                     item {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-               
-                             Text(
-                                 text = "${coin.rank}. ${coin.name} (${coin.symbol})",
-                                 style = MaterialTheme.typography.h2,
-                                 modifier = Modifier.weight(8f)
-                             )
+
+                        Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween) {
+
+                             Text(text = "${coin.rank}. ${coin.name} (${coin.symbol})",
+                                 style = MaterialTheme.typography.h5,
+                                 modifier = Modifier.weight(8f))
 
 
-                            Status(
-                                args = coin.isActive,
-                                modifier = Modifier.align(Alignment.CenterVertically)
-                            )
+                            Status(args = coin.isActive,
+                                   modifier = Modifier.align(Alignment.CenterVertically))
 
 
                         }
@@ -56,43 +51,60 @@ fun CoinDetailScreen(
                         Spacer(modifier = Modifier.height(12.dp))
 
                         Text(
-                            text = coin.description,
-                            style = MaterialTheme.typography.body2
-                            )
+                            text = coin.description?:"Description is not available.",
+                            color = if(coin.description == null) Color.Gray else Color.Black,
+                            style = MaterialTheme.typography.body2)
 
                         Spacer(modifier = Modifier.height(12.dp))
 
-                        Text(
-                            text = "Tags",
-                            style = MaterialTheme.typography.h3
-                        )
 
-                        Row(
-                            modifier = Modifier.fillMaxWidth()) {
+                        coin.tags?.let { coinTag ->
 
-                            coin.tags.forEach { tag-> CoinTag(tags = tag) }
+                            Text(
+                                text = "Tags",
+                                style = MaterialTheme.typography.h5)
 
+                            Spacer(modifier = Modifier.height(12.dp))
+
+                            FlowRow(
+                                mainAxisSpacing = 10.dp,
+                                crossAxisSpacing = 10.dp,
+                                modifier = Modifier.fillMaxWidth()) {
+                                coinTag.forEach { tag -> CoinTag(tags = tag) }
+                            }
+                        }
+                    }
+
+
+
+
+
+                    coin.team?.let { coinTeam ->
+
+                        if (coinTeam.isNotEmpty()) {
+
+                            item {
+
+                                Timber.e("Size is ${coin.team?.size}")
+                                Spacer(modifier = Modifier.height(12.dp))
+
+                                Text(text = "Team members",
+                                    style = MaterialTheme.typography.h5)
+
+                                Spacer(modifier = Modifier.height(12.dp))
+                            }
                         }
 
-                        Spacer(modifier = Modifier.height(12.dp))
+                        items(coinTeam) { member ->
 
-                        Text(
-                            text = "Team members",
-                            style = MaterialTheme.typography.h3
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
+                            TeamListItem(
+                                teamMember = member, modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(10.dp))
+                            Divider()
+                        }
                     }
-
-                    items(coin.team){ member ->
-                        TeamListItem(teamMember = member , modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(10.dp))
-                        Divider()
-                    }
-
-
                 }
-
             }
 
 

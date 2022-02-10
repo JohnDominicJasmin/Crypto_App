@@ -24,15 +24,13 @@ fun CoinListScreen(
 ) {
 
     with(viewModel.coinListState.value) {
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().padding(top = 18.dp)) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
 
                 items(coins) { coin ->
-                    Row(modifier = Modifier.fillMaxWidth()) {
                         CoinListItem(coin = coin, onItemClick = { clickedCoin ->
                             navController.navigate(route = Screen.CoinDetailScreen.route + "/${clickedCoin.id}")
                         })
-                    }
                 }
 
             }

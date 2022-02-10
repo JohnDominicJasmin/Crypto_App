@@ -21,7 +21,7 @@ fun TeamListItem(
 
         Text(
             text = teamMember.name,
-            style = MaterialTheme.typography.h4,
+            style = MaterialTheme.typography.h6,
             color = Color.Gray
         )
 
@@ -29,7 +29,7 @@ fun TeamListItem(
 
         Text(
             text = teamMember.position,
-            style = MaterialTheme.typography.body2,
+            style = MaterialTheme.typography.caption,
             fontStyle = FontStyle.Italic
         )
 
