@@ -1,5 +1,6 @@
 package com.example.crypto.feature_coin.presentation.ui.coin_detail
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -16,15 +17,17 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinDetailViewModel @Inject constructor(
     private val coinUseCase: CoinUseCase,
-    savedStateHandle: SavedStateHandle
-    ):ViewModel() {
+    savedStateHandle: SavedStateHandle ):ViewModel() {
 
     private val _coinListState = mutableStateOf(CoinDetailState())
     val coinListState:State<CoinDetailState> = _coinListState
 
 
     init{
-        savedStateHandle.get<String>(CoinConstants.COIN_ID)?.let(::getCoin)
+        savedStateHandle.get<String>(CoinConstants.COIN_ID)?.let{
+            getCoin(it)
+            Log.e("CoinDetailViewModel","Result is $it")
+        }
     }
 
     
@@ -33,13 +36,13 @@ class CoinDetailViewModel @Inject constructor(
         coinUseCase.getCoinByIdUseCase(coinId).onEach { result ->
 
                 when (result) {
-                    is Resource.Success<*> -> {
+                    is Resource.Success -> {
                         _coinListState.value = CoinDetailState(coins = result.data)
                     }
-                    is Resource.Error<*> ->{
+                    is Resource.Error ->{
                         _coinListState.value = CoinDetailState(isLoading = false, error = result.message?:"An unexpected error occurred.")
                     }
-                    is Resource.Loading<*> ->{
+                    is Resource.Loading ->{
                         _coinListState.value = CoinDetailState(isLoading = true)
                     }
 
