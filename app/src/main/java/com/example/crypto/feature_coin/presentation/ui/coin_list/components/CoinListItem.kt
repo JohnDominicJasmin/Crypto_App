@@ -7,6 +7,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,19 +33,19 @@ fun CoinListItem(
     Row(modifier = Modifier
         .fillMaxWidth()
         .clickable { onItemClick(coin) }
-        .padding(13.dp),
+        .padding(top = 10.dp, bottom = 10.dp, start = 12.dp, end = 15.dp),
         verticalAlignment = CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween) {
 
         with(coin) {
 
-            Row{
+            Row(verticalAlignment = CenterVertically){
                 Image(
                     painter = rememberImagePainter("${CoinConstants.CRYPTO_ICON_BASE_URL}${symbol.lowercase()}"),
                     contentDescription = null,
                     modifier = Modifier.size(26.dp)
                 )
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(12.dp))
                 
                 Text(
                     text = buildAnnotatedString {

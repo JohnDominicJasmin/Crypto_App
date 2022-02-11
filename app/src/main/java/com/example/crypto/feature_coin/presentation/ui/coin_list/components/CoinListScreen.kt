@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -22,11 +22,31 @@ fun CoinListScreen(
     viewModel: CoinListViewModel = hiltViewModel()
 ) {
 
+    var searchQuery by remember{(mutableStateOf(""))}
+
+    CoinListSearchBar(searchQuery = searchQuery, onValueChange = {searchQuery = it})
     with(viewModel.coinListState.value) {
-        Box(modifier = Modifier.fillMaxSize().padding(top = 18.dp)) {
+
+
+
+
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 100.5.dp)) {
+
+
+
+
+
             LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-                items(coins) { coin ->
+
+
+
+                items(coins.filter {
+
+                    it.name.contains(searchQuery, ignoreCase = true) || it.symbol.contains(searchQuery, ignoreCase = true)} ) { coin ->
+
                         CoinListItem(coin = coin, onItemClick = { clickedCoin ->
                             navController.navigate(route = Screen.CoinDetailScreen.route + "/${clickedCoin.id}")
                         })
