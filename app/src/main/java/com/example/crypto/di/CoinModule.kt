@@ -24,7 +24,7 @@ object CoinModule {
     @Singleton
     fun providesCoinPaprikaApi():CoinPaprikaApi =
         Retrofit.Builder()
-            .baseUrl(CoinConstants.BASE_URL)
+            .baseUrl(CoinConstants.COIN_PAPRIKA_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CoinPaprikaApi::class.java)
