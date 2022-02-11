@@ -26,7 +26,7 @@ class CoinListViewModel @Inject constructor(
 
     private fun getCoin() {
         coinUseCase.getCoinsUseCase().onEach { result ->
-
+        // _coinListState.value.coins.filter { it.name.contains("b") }
                 when (result) {
                     is Resource.Success -> {
                         _coinListState.value = CoinListState(coins = result.data?: emptyList())

@@ -15,10 +15,8 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun CoinTag(
-    tags:String
-) { 
-    
+fun CoinTag(tags:String) {
+
     Surface(modifier = Modifier
         .border(
             width = 2.dp,
