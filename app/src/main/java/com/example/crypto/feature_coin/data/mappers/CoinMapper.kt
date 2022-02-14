@@ -21,7 +21,6 @@ object CoinMapper {
 
 
     fun CoinDetailDto.toCoinDetail(): CoinDetail {
-        Timber.e("ResultsID: $id\n NAME: $name \n IS_ACTIVE: $isActive \n SYMBOL: $symbol \n DESCRIPTION: $description \n RANK $rank \n TEAM_MEMBERS $team \n TAGS $tags")
         return CoinDetail(
             coinId = id,
             name = name,

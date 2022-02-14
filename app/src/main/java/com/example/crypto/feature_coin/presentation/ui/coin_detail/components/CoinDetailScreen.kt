@@ -52,7 +52,7 @@ fun CoinDetailScreen(
 
                         Text(
                             text = coin.description?:"Description is not available.",
-                            color = if(coin.description == null) Color.Gray else Color.Black,
+                            color = if(coin.description == null) Color.Gray else Color.White,
                             style = MaterialTheme.typography.body2)
 
                         Spacer(modifier = Modifier.height(12.dp))

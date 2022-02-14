@@ -49,7 +49,7 @@ fun CoinListItem(
                 Text(
                     text = buildAnnotatedString {
                         withStyle(style = ParagraphStyle(lineHeight = 22.sp)) {
-                            withStyle(style = SpanStyle(color = Color.Black)) {
+                            withStyle(style = SpanStyle(color = Color.White)) {
                                 append("$name\n")
                             }
                             withStyle(style = SpanStyle(color = Color.Gray)) {

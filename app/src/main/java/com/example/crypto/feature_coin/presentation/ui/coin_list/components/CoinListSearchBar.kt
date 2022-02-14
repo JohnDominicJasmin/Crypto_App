@@ -18,22 +18,23 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun CoinListSearchBar(
-    searchQuery: String,
-    onValueChange: (String) -> Unit) {
+    searchQuery: MutableState<TextFieldValue>) {
 
     val keyboardController = LocalSoftwareKeyboardController.current
         Surface(
             elevation = 10.dp,
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight().padding(all = 17.dp),
-            color = Color.White,
+                .wrapContentHeight()
+                .padding(all = 17.dp),
+            color = Color.DarkGray,
             shape = RoundedCornerShape(20)) {
 
             Row(
@@ -45,8 +46,8 @@ fun CoinListSearchBar(
             ) {
 
                 TextField(
-                    value = searchQuery,
-                    onValueChange = onValueChange,
+                    value = searchQuery.value,
+                    onValueChange = { searchQuery.value = it },
                     label = { Text(text = "Search") },
                     modifier = Modifier.fillMaxWidth(0.96f),
                     keyboardOptions = KeyboardOptions(
@@ -65,7 +66,7 @@ fun CoinListSearchBar(
                     colors = TextFieldDefaults.textFieldColors(
                         textColor = Color.Gray,
                         disabledTextColor = Color.Transparent,
-                        backgroundColor = Color.White,
+                        backgroundColor = Color.DarkGray,
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
                         disabledIndicatorColor = Color.Transparent
@@ -76,11 +77,3 @@ fun CoinListSearchBar(
         }
 }
 
-@Preview
-@Composable
-fun SearchBar() {
-    var searchQuery by remember{(mutableStateOf(""))}
-    CoinListSearchBar(searchQuery = searchQuery){
-        searchQuery = it
-    }
-}
