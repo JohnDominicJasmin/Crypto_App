@@ -1,4 +1,4 @@
-package com.example.crypto.feature_coin.data.exceptions
+package com.example.crypto.feature_coin.domain.exceptions
 
 import kotlin.RuntimeException
 

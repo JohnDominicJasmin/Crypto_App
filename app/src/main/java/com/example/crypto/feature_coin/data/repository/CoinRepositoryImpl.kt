@@ -1,7 +1,7 @@
 package com.example.crypto.feature_coin.data.repository
 
 import com.example.crypto.feature_coin.data.CoinPaprikaApi
-import com.example.crypto.feature_coin.data.exceptions.CustomException
+import com.example.crypto.feature_coin.domain.exceptions.CustomException
 import com.example.crypto.feature_coin.data.mappers.CoinMapper.toCoin
 import com.example.crypto.feature_coin.data.mappers.CoinMapper.toCoinDetail
 import com.example.crypto.feature_coin.domain.model.Coin
