@@ -24,7 +24,6 @@ fun CoinListScreen(
 ) {
 
     val searchQuery = remember { (mutableStateOf(TextFieldValue(text = ""))) }
-    var isCoinFound by remember { mutableStateOf(false) }
 
     CoinListSearchBar(searchQuery = searchQuery)
     with(viewModel.coinListState.value) {
@@ -38,15 +37,9 @@ fun CoinListScreen(
             LazyColumn(modifier = Modifier.fillMaxSize()) {
 
 
+                items(this@with.coins.take(n = 1000).filter {
 
-
-                items(coins.take(n = 100).filter {
-
-                    isCoinFound = it.name.contains(
-                        searchQuery.value.text,
-                        ignoreCase = true) || it.symbol.contains(searchQuery.value.text, ignoreCase = true)
-
-                    return@filter isCoinFound }) { coin ->
+                  it.name.contains(searchQuery.value.text, ignoreCase = true) || it.symbol.contains(searchQuery.value.text, ignoreCase = true) }) { coin ->
 
                         CoinListItem(coin = coin, onItemClick = { clickedCoin ->
                             navController.navigate(route = Screen.CoinDetailScreen.route + "/${clickedCoin.id}")
@@ -58,7 +51,7 @@ fun CoinListScreen(
 
             }
 
-            if (error.isNotBlank()) {
+            if (this@with.error.isNotBlank()) {
                 Text(
                     text = error,
                     color = MaterialTheme.colors.error,
@@ -70,7 +63,7 @@ fun CoinListScreen(
                 )
             }
 
-            if (isLoading) {
+            if (this@with.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
                 )
