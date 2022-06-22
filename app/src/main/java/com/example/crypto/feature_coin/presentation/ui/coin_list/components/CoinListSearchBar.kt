@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.ExposedDropdownMenuDefaults.textFieldColors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
@@ -22,10 +23,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun CoinListSearchBar(
-    searchQuery: MutableState<TextFieldValue>) {
+    searchQuery : MutableState<TextFieldValue>) {
 
     val keyboardController = LocalSoftwareKeyboardController.current
         Surface(
@@ -48,7 +49,7 @@ fun CoinListSearchBar(
                 TextField(
                     value = searchQuery.value,
                     onValueChange = { searchQuery.value = it },
-                    label = { Text(text = "Search") },
+                    label = { Text(text = "Search",color = Color.White) },
                     modifier = Modifier.fillMaxWidth(0.96f),
                     keyboardOptions = KeyboardOptions(
                         autoCorrect = false,
@@ -62,14 +63,16 @@ fun CoinListSearchBar(
                     keyboardActions = KeyboardActions(onSearch = {
                         keyboardController?.hide()
                     }),
-                    textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
-                    colors = TextFieldDefaults.textFieldColors(
+                    textStyle = TextStyle(color = Color.White),
+                    colors = textFieldColors(
                         textColor = Color.Gray,
                         disabledTextColor = Color.Transparent,
                         backgroundColor = Color.DarkGray,
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent
+                        disabledIndicatorColor = Color.Transparent,
+                        cursorColor = Color.White
+
 
                 ))
             }
