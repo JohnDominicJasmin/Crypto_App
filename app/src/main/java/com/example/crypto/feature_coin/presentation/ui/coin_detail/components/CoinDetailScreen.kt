@@ -1,16 +1,15 @@
 package com.example.crypto.feature_coin.presentation.ui.coin_detail.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -19,10 +18,12 @@ import com.example.crypto.feature_coin.presentation.ui.common.Status
 import com.google.accompanist.flowlayout.FlowRow
 import timber.log.Timber
 
+@ExperimentalMaterialApi
 @Composable
 fun CoinDetailScreen(
     viewModel: CoinDetailViewModel = hiltViewModel()
 ) {
+    val context = LocalContext.current
 
         Box(modifier = Modifier.fillMaxSize()) {
             with(viewModel.coinListState.value) {
@@ -70,7 +71,7 @@ fun CoinDetailScreen(
                                 mainAxisSpacing = 10.dp,
                                 crossAxisSpacing = 10.dp,
                                 modifier = Modifier.fillMaxWidth()) {
-                                coinTag.forEach { tag -> CoinTag(tags = tag) }
+                                coinTag.forEach { tag -> CoinTag(tag) }
                             }
                         }
                     }
@@ -85,7 +86,6 @@ fun CoinDetailScreen(
 
                             item {
 
-                                Timber.e("Size is ${coin.team?.size}")
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Text(text = "Team members",
@@ -98,7 +98,9 @@ fun CoinDetailScreen(
                         items(coinTeam) { member ->
 
                             TeamListItem(
-                                teamMember = member, modifier = Modifier
+                                teamMember = member, modifier = Modifier.clickable {
+                                    openBrowser(context = context, searchItem = "${member.name} ${member.position} of ${coin.name}")
+                                }
                                     .fillMaxWidth()
                                     .padding(10.dp))
                             Divider()
