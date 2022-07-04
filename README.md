@@ -4,11 +4,16 @@ CoinSearch is an Android App that helps you search for different crypto coins an
 <br>
 
 <div style="display:inline-block">
+  
+<img src="mockups/crypto-sc-4-removebg-preview.png" width="220">
+  
 <img src="mockups/crypto-sc-1-removebg-preview.png" width="220">
 
 <img src="mockups/crypto-sc-2-removebg-preview.png" width="220">
 
 <img src="mockups/crypto-sc-3-removebg-preview.png" width="220">
+  
+
 
 </div>
 
