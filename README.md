@@ -1,7 +1,13 @@
 <h1>About</h1>
 CoinSearch is an Android App that helps you search for different crypto coins and their information. CoinSearch can help you find familiarity with varying crypto coins in the market.
 
+<br>
+
 <img src="mockups/crypto-sc-1-removebg-preview.png" width="220">
+
+<img src="mockups/crypto-sc-2-removebg-preview.png" width="220">
+
+<img src="mockups/crypto-sc-3-removebg-preview.png" width="220">
 
 The libraries i use are: 
 - [Hilt](https://dagger.dev/hilt/)
