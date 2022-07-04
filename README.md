@@ -11,6 +11,8 @@ CoinSearch is an Android App that helps you search for different crypto coins an
 <img src="mockups/crypto-sc-3-removebg-preview.png" width="220">
 
 </div>
+
+
 The libraries i use are: 
 - [Hilt](https://dagger.dev/hilt/)
 - [Retrofit](https://square.github.io/retrofit/)
